@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Defense & Aerospace - Comprehensive Use Cases</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #60a5fa;
+            --accent-color: #93c5fd;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --defense-blue: #3b82f6;
+            --aerospace-silver: #60a5fa;
+            --military-green: #10b981;
+            --security-gray: #93c5fd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-color), #0b1220);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--defense-blue), var(--aerospace-silver), var(--military-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .nav-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: var(--primary-color);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(45deg, var(--defense-blue), var(--aerospace-silver));
+            border: none;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--defense-blue), var(--aerospace-silver), var(--military-green));
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .icon.ml { background: rgba(59, 130, 246, 0.2); color: var(--defense-blue); }
+        .icon.gen { background: rgba(96, 165, 250, 0.2); color: var(--aerospace-silver); }
+        .icon.ag { background: rgba(16, 185, 129, 0.2); color: var(--military-green); }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, var(--defense-blue), var(--aerospace-silver));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .architecture-diagram {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .architecture-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .architecture-item::before {
+            content: '→';
+            color: var(--defense-blue);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(96, 165, 250, 0.1));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-title {
+            color: var(--defense-blue);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--defense-blue);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .defense-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .military-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            margin-left: 0.5rem;
+        }
+
+        .aerospace-badge {
+            background: rgba(96, 165, 250, 0.2);
+            color: #60a5fa;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 1rem; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡 AI in Defense & Aerospace</h1>
+            <p class="subtitle">Comprehensive Guide to Machine Learning, Generative AI, and Agentic Systems in Military & Aviation</p>
+        </header>
+
+        <div class="nav-container">
+            <button class="nav-btn active" onclick="showSection('ml')">🔮 ML / Predictive</button>
+            <button class="nav-btn" onclick="showSection('gen')">✍️ Generative AI</button>
+            <button class="nav-btn" onclick="showSection('agentic')">🤖 Agentic AI</button>
+        </div>
+
+        <!-- ML / Predictive Use Cases -->
+        <div id="ml" class="content-section active">
+            <h2 class="section-title">🔮 Machine Learning & Predictive Analytics</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">
+                Advanced statistical models and algorithms for mission success, equipment reliability, and operational effectiveness
+            </p>
+
+            <div class="card-grid">
+                <!-- Predictive Maintenance (Aircraft) -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">✈️</div>
+                        <div>
+                            <div class="card-title">Predictive Maintenance (Aircraft)</div>
+                            <div class="card-subtitle">Flight Safety</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Predict aircraft component failures and maintenance needs to maximize mission readiness and flight safety.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Predictive Maintenance</span>
+                            <span class="tech-tag">Sensor Analytics</span>
+                            <span class="tech-tag">Failure Prediction</span>
+                            <span class="tech-tag">Flight Safety</span>
+                            <span class="tech-tag">Readiness Optimization</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Sensor Data → Component Analysis → Failure Prediction → Maintenance Scheduling → Readiness → Mission</div>
+                            <div class="architecture-item">Flight Hours → Stress Analysis → Wear Detection → Intervention → Reliability → Safety</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Aircraft sensor telemetry</li>
+                                <li>Component performance data</li>
+                                <li>Flight operation logs</li>
+                                <li>Maintenance history</li>
+                                <li>Environmental conditions</li>
+                                <li>Component specifications</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Failure Prediction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Maintenance Costs</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Mission Readiness</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Threat Detection Models -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">⚠️</div>
+                        <div>
+                            <div class="card-title">Threat Detection</div>
+                            <div class="card-subtitle">Security Intelligence</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Identify and classify potential threats using multi-source intelligence data for proactive defense and security operations.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Threat Intelligence</span>
+                            <span class="tech-tag">Pattern Recognition</span>
+                            <span class="tech-tag">Risk Assessment</span>
+                            <span class="tech-tag">Security Analytics</span>
+                            <span class="tech-tag">Early Warning</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Intelligence Data → Pattern Analysis → Threat Classification → Risk Assessment → Alert Generation → Response</div>
+                            <div class="architecture-item">Multi-source Data → Behavioral Analysis → Anomaly Detection → Threat Scoring → Prioritization</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Intelligence gathering systems</li>
+                                <li>Historical threat data</li>
+                                <li>Behavioral patterns</li>
+                                <li>Geopolitical indicators</li>
+                                <li>Communication intercepts</li>
+                                <li>Satellite imagery</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Threat Detection</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">50-70%</div>
+                                <div class="metric-label">False Positives</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Response Time</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission Outcome Prediction -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">🎯</div>
+                        <div>
+                            <div class="card-title">Mission Outcome Prediction</div>
+                            <div class="card-subtitle">Operational Planning</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Predict mission success probabilities based on intelligence, weather, enemy capabilities, and resource allocation.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Mission Planning</span>
+                            <span class="tech-tag">Risk Assessment</span>
+                            <span class="tech-tag">Probability Modeling</span>
+                            <span class="tech-tag">Resource Optimization</span>
+                            <span class="tech-tag">Strategic Analysis</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Intelligence Data → Environmental Factors → Enemy Analysis → Resource Allocation → Outcome Prediction → Planning</div>
+                            <div class="architecture-item">Mission Parameters → Risk Assessment → Success Probability → Strategy → Execution → Evaluation</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Historical mission data</li>
+                                <li>Enemy capability assessments</li>
+                                <li>Weather and terrain data</li>
+                                <li>Resource availability</li>
+                                <li>Intelligence reports</li>
+                                <li>Previous mission outcomes</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">75-85%</div>
+                                <div class="metric-label">Prediction Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Mission Success</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Resource Efficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Equipment Reliability Forecasting -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">🔧</div>
+                        <div>
+                            <div class="card-title">Equipment Reliability</div>
+                            <div class="card-subtitle">Asset Management</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Forecast equipment reliability and lifespan to optimize maintenance schedules and ensure operational readiness.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Reliability Engineering</span>
+                            <span class="tech-tag">Lifecycle Analysis</span>
+                            <span class="tech-tag">Predictive Analytics</span>
+                            <span class="tech-tag">Maintenance Planning</span>
+                            <span class="tech-tag">Asset Management</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Equipment Data → Usage Analysis → Reliability Modeling → Maintenance Planning → Optimization → Readiness</div>
+                            <div class="architecture-item">Performance Metrics → Stress Analysis → Failure Patterns → Intervention → Longevity → Efficiency</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Equipment performance data</li>
+                                <li>Usage patterns and cycles</li>
+                                <li>Environmental conditions</li>
+                                <li>Maintenance history</li>
+                                <li>Failure incident reports</li>
+                                <li>Manufacturer specifications</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Reliability Prediction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">35-55%</div>
+                                <div class="metric-label">Maintenance Costs</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Equipment Downtime</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Satellite Anomaly Detection -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">🛰️</div>
+                        <div>
+                            <div class="card-title">Satellite Anomaly Detection</div>
+                            <div class="card-subtitle">Space Operations</div>
+                            <span class="aerospace-badge">Aerospace</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Detect and predict satellite system anomalies to maintain space asset functionality and mission continuity.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Satellite Monitoring</span>
+                            <span class="tech-tag">Anomaly Detection</span>
+                            <span class="tech-tag">Space Systems</span>
+                            <span class="tech-tag">Predictive Maintenance</span>
+                            <span class="tech-tag">Orbital Operations</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Telemetry Data → System Monitoring → Anomaly Detection → Impact Assessment → Response → Recovery</div>
+                            <div class="architecture-item">Sensor Data → Performance Analysis → Failure Prediction → Intervention → Continuity → Optimization</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Satellite telemetry data</li>
+                                <li>System performance metrics</li>
+                                <li>Orbital environment data</li>
+                                <li>Historical anomaly records</li>
+                                <li>Component specifications</li>
+                                <li>Space weather data</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Anomaly Detection</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">System Recovery</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Mission Continuity</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fuel Optimization Models -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">⛽</div>
+                        <div>
+                            <div class="card-title">Fuel Optimization</div>
+                            <div class="card-subtitle">Mission Efficiency</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Optimize fuel consumption across aircraft, vehicles, and vessels to extend operational range and reduce logistical burden.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Fuel Efficiency</span>
+                            <span class="tech-tag">Route Optimization</span>
+                            <span class="tech-tag">Performance Analytics</span>
+                            <span class="tech-tag">Logistics Planning</span>
+                            <span class="tech-tag">Range Extension</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Mission Parameters → Route Planning → Fuel Consumption → Optimization → Efficiency → Range</div>
+                            <div class="architecture-item">Aircraft Performance → Weather Impact → Load Analysis → Consumption Modeling → Optimization</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Aircraft/vehicle performance data</li>
+                                <li>Route and mission profiles</li>
+                                <li>Weather and environmental conditions</li>
+                                <li>Load and payload information</li>
+                                <li>Fuel consumption patterns</li>
+                                <li>Operational constraints</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">20-40%</div>
+                                <div class="metric-label">Fuel Consumption</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Operational Range</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">25-45%</div>
+                                <div class="metric-label">Logistics Burden</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generative AI Use Cases -->
+        <div id="gen" class="content-section">
+            <h2 class="section-title">✍️ Generative AI Applications</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">
+                AI-powered content creation, mission planning, and technical documentation for defense and aerospace operations
+            </p>
+
+            <div class="card-grid">
+                <!-- Mission Briefing Summaries -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">📋</div>
+                        <div>
+                            <div class="card-title">Mission Briefing Summaries</div>
+                            <div class="card-subtitle">Operational Intelligence</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate comprehensive mission briefings with intelligence summaries, risk assessments, and operational plans for military operations.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Intelligence Analysis</span>
+                            <span class="tech-tag">Mission Planning</span>
+                            <span class="tech-tag">Risk Assessment</span>
+                            <span class="tech-tag">Operational Briefing</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Intelligence Data → Analysis → Briefing Generation → Risk Assessment → Operational Plan → Distribution</div>
+                            <div class="architecture-item">Mission Objectives → Threat Analysis → Resource Planning → Execution Strategy → Contingency Plans</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Intelligence reports and assessments</li>
+                                <li>Mission objectives and parameters</li>
+                                <li>Threat analysis data</li>
+                                <li>Resource availability</li>
+                                <li>Historical mission data</li>
+                                <li>Operational constraints</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">90-95%</div>
+                                <div class="metric-label">Briefing Quality</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-85%</div>
+                                <div class="metric-label">Planning Efficiency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">4-6 hours</div>
+                                <div class="metric-label">Briefing Generation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Documentation Drafting -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">📄</div>
+                        <div>
+                            <div class="card-title">Technical Documentation</div>
+                            <div class="card-subtitle">System Specifications</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate comprehensive technical documentation for defense systems, aerospace vehicles, and military equipment specifications.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Technical Writing</span>
+                            <span class="tech-tag">System Documentation</span>
+                            <span class="tech-tag">Specifications</span>
+                            <span class="tech-tag">Maintenance Procedures</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">System Specifications → Documentation → Technical Standards → Review → Approval → Publication</div>
+                            <div class="architecture-item">Design Data → Component Details → Operational Procedures → Safety Guidelines → Maintenance</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>System design specifications</li>
+                                <li>Component technical data</li>
+                                <li>Operational procedures</li>
+                                <li>Safety and compliance standards</li>
+                                <li>Maintenance requirements</li>
+                                <li>Industry specifications</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">90-95%</div>
+                                <div class="metric-label">Documentation Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Documentation Efficiency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">6-8 hours</div>
+                                <div class="metric-label">Document Creation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation Scenario Creation -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">🎮</div>
+                        <div>
+                            <div class="card-title">Simulation Scenarios</div>
+                            <div class="card-subtitle">Training & Planning</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Create realistic training scenarios and mission simulations for military personnel and aerospace operations.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Scenario Generation</span>
+                            <span class="tech-tag">Training Simulations</span>
+                            <span class="tech-tag">Mission Planning</span>
+                            <span class="tech-tag">Tactical Training</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Training Objectives → Scenario Design → Environment Creation → Simulation → Evaluation → Improvement</div>
+                            <div class="architecture-item">Mission Parameters → Threat Modeling → Terrain Generation → Scenario Execution → Analysis</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Training objectives and goals</li>
+                                <li>Mission parameters and constraints</li>
+                                <li>Threat and enemy profiles</li>
+                                <li>Terrain and environmental data</li>
+                                <li>Equipment and resource availability</li>
+                                <li>Historical scenario data</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Scenario Realism</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-90%</div>
+                                <div class="metric-label">Training Effectiveness</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">4-6 hours</div>
+                                <div class="metric-label">Scenario Development</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intelligence Summaries -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">🔍</div>
+                        <div>
+                            <div class="card-title">Intelligence Summaries</div>
+                            <div class="card-subtitle">Security Analysis</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate comprehensive intelligence summaries from multi-source data for strategic decision-making and operational planning.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Intelligence Analysis</span>
+                            <span class="tech-tag">Strategic Assessment</span>
+                            <span class="tech-tag">Threat Analysis</span>
+                            <span class="tech-tag">Decision Support</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Raw Intelligence → Analysis → Assessment → Summary Generation → Distribution → Action</div>
+                            <div class="architecture-item">Data Sources → Pattern Recognition → Threat Evaluation → Strategic Insights → Recommendations</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Multi-source intelligence data</li>
+                                <li>Historical intelligence reports</li>
+                                <li>Threat assessment frameworks</li>
+                                <li>Strategic analysis models</li>
+                                <li>Decision-making protocols</li>
+                                <li>Security clearance requirements</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">90-95%</div>
+                                <div class="metric-label">Analysis Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Decision Support</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">5-10 minutes</div>
+                                <div class="metric-label">Summary Generation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training Material Generation -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">🎓</div>
+                        <div>
+                            <div class="card-title">Training Materials</div>
+                            <div class="card-subtitle">Personnel Development</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Create comprehensive training materials for military personnel, aerospace technicians, and defense operations specialists.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Training Content</span>
+                            <span class="tech-tag">Educational Materials</span>
+                            <span class="tech-tag">Skill Development</span>
+                            <span class="tech-tag">Operational Training</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Training Needs → Content Creation → Material Development → Review → Distribution → Assessment</div>
+                            <div class="architecture-item">Skill Requirements → Curriculum Design → Training Modules → Evaluation → Improvement</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Training curriculum requirements</li>
+                                <li>Skill competency frameworks</li>
+                                <li>Operational procedures</li>
+                                <li>Safety protocols</li>
+                                <li>Equipment specifications</li>
+                                <li>Assessment criteria</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Training Quality</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-85%</div>
+                                <div class="metric-label">Skill Acquisition</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">6-8 hours</div>
+                                <div class="metric-label">Content Creation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- After-Action Report Generation -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">📝</div>
+                        <div>
+                            <div class="card-title">After-Action Reports</div>
+                            <div class="card-subtitle">Mission Analysis</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate comprehensive after-action reports analyzing mission performance, lessons learned, and improvement recommendations.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Performance Analysis</span>
+                            <span class="tech-tag">Lessons Learned</span>
+                            <span class="tech-tag">Mission Review</span>
+                            <span class="tech-tag">Improvement Planning</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Mission Data → Performance Analysis → Lessons Learned → Report Generation → Recommendations → Implementation</div>
+                            <div class="architecture-item">Objectives → Execution → Outcomes → Analysis → Improvements → Future Planning</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Mission execution data</li>
+                                <li>Performance metrics</li>
+                                <li>Objective achievement</li>
+                                <li>Resource utilization</li>
+                                <li>Challenges encountered</li>
+                                <li>Success factors</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">90-95%</div>
+                                <div class="metric-label">Report Quality</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Analysis Depth</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">4-6 hours</div>
+                                <div class="metric-label">Report Generation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agentic AI Use Cases -->
+        <div id="agentic" class="content-section">
+            <h2 class="section-title">🤖 Agentic AI Systems</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">
+                Autonomous AI agents that can reason, plan, and execute complex defense operations and aerospace missions
+            </p>
+
+            <div class="card-grid">
+                <!-- Autonomous Mission Planning Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🎯</div>
+                        <div>
+                            <div class="card-title">Autonomous Mission Planning</div>
+                            <div class="card-subtitle">Strategic Operations</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Plan and optimize complex military missions including route planning, resource allocation, and risk assessment.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Mission Planning</span>
+                            <span class="tech-tag">Route Optimization</span>
+                            <span class="tech-tag">Resource Allocation</span>
+                            <span class="tech-tag">Risk Assessment</span>
+                            <span class="tech-tag">Strategic Analysis</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Mission Objectives → Intelligence Analysis → Route Planning → Resource Allocation → Risk Assessment → Execution</div>
+                            <div class="architecture-item">Threat Analysis → Asset Deployment → Timing Coordination → Contingency Planning → Monitoring</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Mission objectives and parameters</li>
+                                <li>Intelligence and threat data</li>
+                                <li>Asset availability and capabilities</li>
+                                <li>Geographic and environmental data</li>
+                                <li>Resource constraints</li>
+                                <li>Historical mission data</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Mission Success</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Planning Efficiency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Resource Optimization</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fleet Readiness Orchestration Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🚢</div>
+                        <div>
+                            <div class="card-title">Fleet Readiness Orchestration</div>
+                            <div class="card-subtitle">Naval Operations</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Coordinate and optimize fleet readiness across naval vessels, aircraft, and support assets for maximum operational effectiveness.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Fleet Management</span>
+                            <span class="tech-tag">Readiness Coordination</span>
+                            <span class="tech-tag">Asset Optimization</span>
+                            <span class="tech-tag">Maintenance Scheduling</span>
+                            <span class="tech-tag">Operational Planning</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Asset Status → Readiness Assessment → Maintenance Planning → Deployment Coordination → Optimization → Monitoring</div>
+                            <div class="architecture-item">Vessel Status → Crew Readiness → Supply Management → Mission Assignment → Coordination → Execution</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Fleet asset status and availability</li>
+                                <li>Maintenance schedules and requirements</li>
+                                <li>Crew readiness and training</li>
+                                <li>Supply and logistics data</li>
+                                <li>Mission requirements</li>
+                                <li>Operational constraints</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">70-90%</div>
+                                <div class="metric-label">Fleet Readiness</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Maintenance Efficiency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Operational Costs</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Threat Intelligence Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🔍</div>
+                        <div>
+                            <div class="card-title">Threat Intelligence</div>
+                            <div class="card-subtitle">Security Operations</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Continuously monitor, analyze, and assess potential threats using multi-source intelligence for proactive defense operations.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Intelligence Monitoring</span>
+                            <span class="tech-tag">Threat Analysis</span>
+                            <span class="tech-tag">Risk Assessment</span>
+                            <span class="tech-tag">Security Intelligence</span>
+                            <span class="tech-tag">Early Warning</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Intelligence Sources → Data Analysis → Threat Assessment → Risk Evaluation → Alert Generation → Response Coordination</div>
+                            <div class="architecture-item">Multi-source Data → Pattern Recognition → Anomaly Detection → Threat Classification → Prioritization</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Intelligence gathering systems</li>
+                                <li>Threat databases and patterns</li>
+                                <li>Geopolitical monitoring</li>
+                                <li>Communication intercepts</li>
+                                <li>Satellite and surveillance data</li>
+                                <li>Historical threat analysis</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Threat Detection</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">50-70%</div>
+                                <div class="metric-label">False Positives</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Response Time</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maintenance Coordination Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🔧</div>
+                        <div>
+                            <div class="card-title">Maintenance Coordination</div>
+                            <div class="card-subtitle">Asset Management</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Coordinate and optimize maintenance operations across defense assets including scheduling, resource allocation, and quality control.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Maintenance Management</span>
+                            <span class="tech-tag">Resource Coordination</span>
+                            <span class="tech-tag">Quality Assurance</span>
+                            <span class="tech-tag">Scheduling Optimization</span>
+                            <span class="tech-tag">Asset Lifecycle</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Asset Status → Maintenance Needs → Resource Allocation → Scheduling → Execution → Quality Control</div>
+                            <div class="architecture-item">Inspection Data → Priority Assessment → Technician Assignment → Parts Management → Completion</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Asset maintenance schedules</li>
+                                <li>Technician availability and skills</li>
+                                <li>Parts and supply inventory</li>
+                                <li>Quality standards and protocols</li>
+                                <li>Priority and urgency criteria</li>
+                                <li>Maintenance history and patterns</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">70-90%</div>
+                                <div class="metric-label">Maintenance Efficiency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Downtime Reduction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Maintenance Costs</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Satellite Monitoring Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🛰️</div>
+                        <div>
+                            <div class="card-title">Satellite Monitoring</div>
+                            <div class="card-subtitle">Space Asset Management</div>
+                            <span class="aerospace-badge">Aerospace</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Monitor and manage satellite constellations including orbital tracking, system health, and mission coordination.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Satellite Operations</span>
+                            <span class="tech-tag">Orbital Tracking</span>
+                            <span class="tech-tag">System Monitoring</span>
+                            <span class="tech-tag">Mission Coordination</span>
+                            <span class="tech-tag">Space Management</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Satellite Telemetry → Health Monitoring → Orbit Tracking → Mission Coordination → Anomaly Response → Optimization</div>
+                            <div class="architecture-item">System Status → Performance Analysis → Resource Management → Task Allocation → Monitoring</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Satellite telemetry data</li>
+                                <li>Orbital parameters and tracking</li>
+                                <li>System health metrics</li>
+                                <li>Mission requirements</li>
+                                <li>Space environment data</li>
+                                <li>Ground station coordination</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">System Monitoring</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Mission Efficiency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Anomaly Response</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multi-domain Operations Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🌐</div>
+                        <div>
+                            <div class="card-title">Multi-domain Operations</div>
+                            <div class="card-subtitle">Integrated Command</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Coordinate operations across land, sea, air, space, and cyber domains for unified military effectiveness and strategic advantage.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Multi-domain Integration</span>
+                            <span class="tech-tag">Command Coordination</span>
+                            <span class="tech-tag">Strategic Operations</span>
+                            <span class="tech-tag">Domain Synchronization</span>
+                            <span class="tech-tag">Unified Command</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Domain Assets → Coordination → Integration → Command → Execution → Monitoring</div>
+                            <div class="architecture-item">Land Operations → Air Operations → Naval Operations → Space Operations → Cyber Operations → Unity</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Domain-specific asset data</li>
+                                <li>Command and control systems</li>
+                                <li>Communication protocols</li>
+                                <li>Strategic objectives</li>
+                                <li>Operational constraints</li>
+                                <li>Coordination frameworks</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">75-90%</div>
+                                <div class="metric-label">Operational Coordination</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Response Time</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Resource Duplication</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>✨ Built with cutting-edge AI technologies for the future of defense and aerospace operations</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                Note: Implementation requires careful consideration of security protocols, operational security, and defense regulations
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update navigation buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find and activate the clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
